@@ -1,4 +1,15 @@
-export const App = () => {
+import React, { Component } from "react";
+import ContactForm from './ContactForm/ContactForm';
+// import Filter from './Filter/Filter';
+// import ContactList from './ContactList/ContactList';
+
+class App extends Component {
+
+  formSubmitHandler = data => {
+    console.log(data);
+  };
+
+render(){  
   return (
     <div
       style={{
@@ -10,7 +21,16 @@ export const App = () => {
         color: '#010101'
       }}
     >
-      React homework template
+      <div>
+        <h1>Phonebook</h1>
+        <ContactForm onSubmit={this.formSubmitHandler}/>
+        <h2>Contacts</h2>
+          {/* <Filter ... /> */}
+          {/* <ContactList ... /> */}
+      </div>
     </div>
   );
 };
+};  
+
+export default App;
