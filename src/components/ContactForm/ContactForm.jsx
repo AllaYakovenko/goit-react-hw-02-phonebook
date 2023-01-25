@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import shortid from "shortid";
 import css from 'components/ContactForm/ContactForm.module.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class ContactForm extends Component {
     state = {
-        contacts: [],
         name: '', 
         number: '',
     };
@@ -24,7 +23,7 @@ class ContactForm extends Component {
         this.reset();
   };
     reset = () => {
-        this.setState({ contacts: [], name: '', number: ''  });
+        this.setState({ name: '', number: '' });
     };
 
     render() {
@@ -77,6 +76,10 @@ class ContactForm extends Component {
             </form>
         );
     };
+};
+
+ContactForm.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
 };
 
 export default ContactForm;
