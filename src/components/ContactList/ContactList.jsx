@@ -1,5 +1,6 @@
 import css from 'components/ContactList/ContactList.module.css';
 import PropTypes from 'prop-types';
+// import shortid from 'shortid';
 
 const ContactList = ({ contacts, onDeleteContact }) => (
     <ul className={ css.contactList}>
@@ -7,11 +8,11 @@ const ContactList = ({ contacts, onDeleteContact }) => (
             <li
                 key={id}
                 className={css.item}>
-                {contact.name} : { contact.number}
+                {contact.name} : {contact.number}
                 <button
                     type="button"
                     className={css.btnContactList}
-                    onClick={()=>onDeleteContact(contact.id)}
+                    onClick={() => onDeleteContact(contact.id)}
                 >
                     Delete
                 </button>

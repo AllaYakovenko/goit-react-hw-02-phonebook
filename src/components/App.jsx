@@ -66,10 +66,14 @@ render(){
           value={this.state.filter}
           onChange={this.findContact}
         />
+        {this.state.contacts.length === 0 ?
+          (<p className={css.messageUser}>There are no contacts in the Phonebook</p>
+          ) : (
         <ContactList
-          contacts={this.filterContacts()}
-          onDeleteContact={this.deleteContact}
+              contacts={this.filterContacts()}
+              onDeleteContact={this.deleteContact}
         />
+          )}
       </div>
     </div>
   );
