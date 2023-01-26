@@ -3,6 +3,7 @@ import css from 'components/App.module.css';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import ContactList from './ContactList/ContactList';
+import shortid from "shortid";
 
 class App extends Component {
     state = {
@@ -14,15 +15,18 @@ class App extends Component {
       ],
        filter: '',
     };
+    
 
   formSubmitHandler = contact => {
+    const id = shortid.generate();
+    const contactObject = { ...contact, id };
   if (
       !this.state.contacts.find(
         ({ name }) => name.toLocaleLowerCase() === contact.name.toLowerCase()
       )
     ) {
       this.setState(({ contacts }) => ({
-        contacts: [...contacts, contact],
+        contacts: [...contacts, contactObject],
       }));
     } else {
       alert(`${contact.name} is already in contacts.`);
@@ -69,7 +73,7 @@ render(){
         {this.state.contacts.length === 0 ?
           (<p className={css.messageUser}>There are no contacts in the Phonebook</p>
           ) : (
-        <ContactList
+            <ContactList
               contacts={this.filterContacts()}
               onDeleteContact={this.deleteContact}
         />
